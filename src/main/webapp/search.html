@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search</title>
+	<meta charset="UTF-8">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+	<script type="text/javascript" src="/Aurora/main.js" ></script>
+	<style>
+		/* Styles for wrapping the search box */
+
+.main {
+    width: 50%;
+    margin: 50px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+	</style>
+</head>
+
+<body style="padding-right: 15%; background-color: white;padding-left: 15%;height:1000px;">
+	<!-- search bar -->
+	<div style="position:relative;top:30px;height:200px;width:100%;border:solid 2px black;">
+		<div style="padding:20px">
+		<h5 style="text-align: center;"> Ứng Dụng Thuật Toán BM25 Cho Tìm Kiếm Văn Bản Pháp Luật</h5>
+		<h6 style="text-align: center;">Giảng viên hướng dẫn: PGS.TS TRẦN ĐÌNH QUẾ</h6></br>
+		<h6 style="text-align: center;">Sinh viên thực hiện: TRẦN THANH THỦY</h6></br>
+		<h6 style="text-align: center;">Lớp: D16CNPM3</h6></br>
+		<h6 style="text-align: center;">Khóa : 2016 - 2021</h6></br>
+		</div>
+	</div>
+	<div style="width: 70%;padding-top: 40px;padding-bottom: 20px">
+	<div class="input-group">
+		<input type="text" class="form-control" placeholder="Search" id="term" value="lao động">
+		<div class="input-group-append">
+			<button class="btn btn-secondary"  onclick="sendInfoAs()">
+				<i class="fa fa-search"></i>
+			</button>
+		</div>
+	</div>
+</div>
+<!-- result box -->
+<div style="width: 70%;height: 1500px;border-right:solid 2px black;padding-right:50px;">
+	<!-- result bar -->
+	<h8 id="countTK" style="color:#11CCFF;"></h8>
+	<div id="result" style="padding-top:20px;"></div>
+	<div>
+		<div id="pre"></div>
+		<div id="kq"></div>
+		<div id="next"></div>
+	</div>
+
+
+</div>
+	<div style="padding: 10px;position:relative;right:-70%;top:-150%;">
+		<input type="checkbox" id="ve3">
+		<label  style="padding-right: 10px;">Thời Gian Gần Nhất</label></br>
+		<input type="checkbox" id="ve4">
+		<label >Phân tách từ khoá</label></br>
+		<input type="checkbox" id="ve5">
+		<label >Tìm Kiếm Mở Rộng Với Từ Đồng Nghĩa</label></br>
+		<input type="checkbox" id="ve6">
+		<label >Data Base Bộ Luật</label></br>
+		<input type="checkbox" id="ve7">
+		<label >Data Base Nghị Quyết</label></br>
+		<input type="checkbox" id="ve8">
+		<label >Data Base Thông Tư</label>
+	</div>
+</body>
+</html>
