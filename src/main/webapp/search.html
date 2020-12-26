@@ -10,7 +10,7 @@
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-	<script type="text/javascript" src="/Aurora/main.js" ></script>
+	<script type="text/javascript" src="/Aurora/main.js"></script>
 	<style>
 		/* Styles for wrapping the search box */
 
@@ -41,13 +41,14 @@
 
 <body style="padding-right: 15%; background-color: white;padding-left: 15%;height:1000px;">
 	<!-- search bar -->
-	<div style="position:relative;top:30px;height:200px;width:100%;border:solid 2px black;">
-		<div style="padding:20px">
-		<h5 style="text-align: center;"> Ứng Dụng Thuật Toán BM25 Cho Tìm Kiếm Văn Bản Pháp Luật</h5>
-		<h6 style="text-align: center;">Giảng viên hướng dẫn: PGS.TS TRẦN ĐÌNH QUẾ</h6></br>
-		<h6 style="text-align: center;">Sinh viên thực hiện: TRẦN THANH THỦY</h6></br>
-		<h6 style="text-align: center;">Lớp: D16CNPM3</h6></br>
-		<h6 style="text-align: center;">Khóa : 2016 - 2021</h6></br>
+	<div style="position:relative;top:30px;height:220px;width:100%;border:solid 2px black;">
+		<div >
+		<h5 style="text-align: center;padding-top:10px;"> Ứng Dụng Thuật Toán BM25 Cho Tìm Kiếm Văn Bản Pháp Luật</h5>
+		<h6 style="text-align: center;padding-bottom:10px;">Giảng viên hướng dẫn: PGS.TS TRẦN ĐÌNH QUẾ</h6>
+		<h6 style="text-align: center;padding-bottom:10px;">Sinh viên thực hiện: TRẦN THANH THỦY</h6>
+		<h6 style="text-align: center;padding-bottom:10px;">Lớp: D16CNPM3</h6>
+		<h6 style="text-align: center;padding-bottom:10px;">Khóa : 2016 - 2021</h6>
+			<h6 style="text-align: center;"> Hệ: Chính uy</h6>
 		</div>
 	</div>
 	<div style="width: 70%;padding-top: 40px;padding-bottom: 20px">
@@ -55,10 +56,11 @@
 		<input type="text" class="form-control" placeholder="Search" id="term" value="lao động">
 		<div class="input-group-append">
 			<button class="btn btn-secondary"  onclick="sendInfoAs()">
-				<i class="fa fa-search"></i>
+				Search
 			</button>
 		</div>
 	</div>
+
 </div>
 <!-- result box -->
 <div style="width: 70%;height: 1500px;border-right:solid 2px black;padding-right:50px;">
@@ -79,13 +81,16 @@
 		<input type="checkbox" id="ve4">
 		<label >Phân tách từ khoá</label></br>
 		<input type="checkbox" id="ve5">
-		<label >Tìm Kiếm Mở Rộng Với Từ Đồng Nghĩa</label></br>
+		<label >Mở rộng ngữ nghĩa</label></br>
+		<label >__________________________</label></br>
+
+		<label style="font-weight: 700;">Bộ Dữ Liệu </label></br>
 		<input type="checkbox" id="ve6">
-		<label >Data Base Bộ Luật</label></br>
+		<label >Bộ Luật</label></br>
 		<input type="checkbox" id="ve7">
-		<label >Data Base Nghị Quyết</label></br>
+		<label >Nghị Quyết</label></br>
 		<input type="checkbox" id="ve8">
-		<label >Data Base Thông Tư</label>
+		<label >Thông Tư</label>
 	</div>
 </body>
 </html>

@@ -48,6 +48,7 @@ public class SearchController extends HttpServlet {
         BM25method bm25 = new BM25method();
         //convert term , crop stopword
         term=bm25.CropStopW(term);
+        System.out.println(term+" term");
 
         //rank score
         ArrayList<JSONObject> data = null;

@@ -68,29 +68,33 @@ public class dataDAO {
 
        return true;
     }
-
     //get data in data base
     public ArrayList<JSONObject> getAVPF(String bl,String nq,String tt) throws SQLException {
         ArrayList<JSONObject> arr = new ArrayList<>();
         connect_mysql cnn= new connect_mysql("DataDOC","root","");
         int[] ccl={0,1,0,1,0,1};
         String[][] data =null;
-        data= cnn.getdt("SELECT * FROM ttvb",6,100,ccl);
+        data= cnn.getdt("SELECT * FROM ttvb",6,200,ccl);
         double avg=0;
         double tr=0;
         int ifr =0;
-        int iend=60;
+        int iend=150;
+        String loaivbTK="Tất cả các loại văn bản";
         if (bl.equals("true")){
             ifr=0;
             iend=6;
+            loaivbTK="Văn bản Bộ Luật";
         }else if (tt.equals("true")){
             ifr=7;
             iend=45;
+            loaivbTK="Văn bản Thông tư";
         }
         else if (nq.equals("true")){
             ifr=47;
-            iend=60;
+            iend=150;
+            loaivbTK="Văn bản Nghị quyết";
         }
+        System.out.println("Số data quét: "+(iend-ifr)+" Văn bản: "+loaivbTK);
         for (int i = ifr;i<=iend;i++){
             JSONObject obj = new JSONObject();
             obj.put("path",data[i][1]);
@@ -113,7 +117,7 @@ public class dataDAO {
 
     public static void main(String[] args) throws IOException, SQLException {
         dataDAO dt = new dataDAO();
-        for (int i=1;i<30;i++) {
+        for (int i=1;i<152;i++) {
             String PathFile = "src/main/webapp/DocFile/NQ"+i+".doc";
             String[] data = dt.getStringFile(PathFile);
             int avg = 0;
@@ -139,7 +143,7 @@ public class dataDAO {
 
 
             connect_mysql cnn = new connect_mysql("DataDOC", "root", "");
-            cnn.insertData("INSERT INTO `ttvb` (`id`, `path`, `date`, `loaivb`, `avg`, `try`) VALUES (NULL, '" + PathFile + "', '" + date + "', '" + loai + "', '" + avg + "', '" + data.length + "');");
+            cnn.insertData("INSERT INTO `NQ` (`id`, `path`, `date`, `loaivb`, `avg`, `try`) VALUES (NULL, '" + PathFile + "', '" + date + "', '" + loai + "', '" + avg + "', '" + data.length + "');");
 //        dataDAO dt = new dataDAO();
 //        dt.getAVPF();
         }

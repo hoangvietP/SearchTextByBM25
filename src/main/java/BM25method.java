@@ -61,6 +61,9 @@ public class BM25method {
                 if (ktTerm==true){
                     loaiterm =loai.substring(0,1).toUpperCase() + loai.substring(1).toLowerCase();
                     tieude=tdnd[0].substring(0,1).toUpperCase() + tdnd[0].substring(1).toLowerCase();
+                }else {
+                    loaiterm= loai;
+                    tieude=tdnd[0];
                 }
                 ob.put("loai",loaiterm );
                 ob.put("td", tieude);
@@ -89,6 +92,9 @@ public class BM25method {
                 if (ktTerm==true){
                     loaiterm =loai.substring(0,1).toUpperCase() + loai.substring(1).toLowerCase();
                     tieude=tdndPT[0].substring(0,1).toUpperCase() + tdndPT[0].substring(1).toLowerCase();
+                }else {
+                    loaiterm= loai;
+                    tieude=tdnd[0];
                 }
                 obPT.put("loai", loaiterm);
                 obPT.put("td",tieude);
@@ -122,6 +128,9 @@ public class BM25method {
                     if (ktTerm==true){
                         loaiterm =loai.substring(0,1).toUpperCase() + loai.substring(1).toLowerCase();
                         tieude=tdndDN[0].substring(0,1).toUpperCase() + tdndDN[0].substring(1).toLowerCase();
+                    }else {
+                        loaiterm= loai;
+                        tieude=tdnd[0];
                     }
                     obTDN.put("loai",loaiterm);
                     obTDN.put("td", tieude);
@@ -522,7 +531,6 @@ public class BM25method {
             }
             rt=rt+ter[i]+t;
         }
-
         return rt;
     }
 

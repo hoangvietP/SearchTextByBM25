@@ -34,7 +34,11 @@ countTR=1;
                     if(countKQ<1){
                         countKQ=1;
                     }
-                    document.getElementById("countTK").innerHTML="<h8 id='countTK' style='color:#11CCFF;padding-top:20px;'>"+dtt.length+" kết quả"+"</h8>";
+                    var slkq=0;
+                    if((dtt.length-1)>=0){
+                        slkq= dtt.length-1;
+                    }
+                    document.getElementById("countTK").innerHTML="<h8 id='countTK' style='color:#11CCFF;padding-top:20px;'>"+slkq+" kết quả"+"</h8>";
                     setresult();
                     }
                 })
@@ -61,7 +65,7 @@ function sendInfoAs(){
     url="/Aurora/search";
 }
 function setresult(){
-         if(countKQ>=2 && countTR<parseInt(countKQ)){
+         if(countKQ>=2 && countTR<Math.ceil(countKQ)){
             document.getElementById("next").innerHTML="<button style='background-color:#11CCFF;color:white;position:relative;left:250px;' onclick='setCountRS()'>Xem Tiếp >>></button>";
          }else {
             document.getElementById("next").innerHTML="";
@@ -74,7 +78,7 @@ function setresult(){
 
           }
 
-        document.getElementById("kq").innerHTML="<h8 style='color:#11CCFF;position:relative;top:30px;left:200px;'>"+countTR+"/"+parseInt(countKQ)+"</h8>";
+        document.getElementById("kq").innerHTML="<h8 style='color:#11CCFF;position:relative;top:30px;left:200px;'>"+countTR+"/"+Math.ceil(countKQ) +"</h8>";
 
         i1=i;
         data="";
@@ -108,7 +112,7 @@ function setresult(){
                             var tdd= dt[i].td.split(dt[i].term);
                             var ndtd =tdd[0];
                             for(l=1;l<=tdd.length-1;l++){
-                                ndtd=ndtd+" "+"<h8 style='color:red'>"+dt[i].term+"</h8>"+tdd[l];
+                                ndtd=ndtd+" "+"<h8 style='color:green'>"+dt[i].term+"</h8>"+tdd[l];
                             }
 
                 data=data+" <div style='padding-bottom:20px;'><a href='/Aurora/doc?url="+dt[i].path+"' style='text-decoration: none;'><h4 style='color:#11CCFF;display:block;text-overflow: ellipsis;overflow: hidden; white-space: nowrap;'>"+dt[i].loai+"</h4></a><h8>"+ndtd+"</h8><br><h8 style=''>"+nnd+"</h8></br><h8 style='position:relative;top:-5px;color: #666'>"+dt[i].date+"</h8></div>";
@@ -154,3 +158,5 @@ function gettdn(){
                     }
                 })
             };
+
+

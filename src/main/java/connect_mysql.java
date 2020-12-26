@@ -16,10 +16,12 @@ public class connect_mysql {
     }
 
     public String[][] getdt(String query, int ccolum, int slcl, int[] type) throws SQLException {
+
         String[][] data = new String[slcl][ccolum];
         Connection connect = connect();
         Statement stmt = connect.createStatement();
         ResultSet rs = stmt.executeQuery(query);
+
         int i = 0;
         while (rs.next()) {
             for (int j = 0; j <= ccolum - 1; j++) {
@@ -75,4 +77,29 @@ public class connect_mysql {
 ////        boolean status= false;
 ////        status=cnn.insertData("query"); ínert thành công status=true và ngc lại
 //    }
+    public void test() throws SQLException {
+        String[][] data = new String[106][6];
+        Connection connect = connect();
+        Statement stmt = connect.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM NQ");
+        int i = 0;
+        int[] type = {0,1,0,1,0,1};
+        while (rs.next()) {
+            for (int j = 0; j <6; j++) {
+                if (type[j] == 0) {
+                    data[i][j] = "" + rs.getInt(j + 1);
+                }
+                if (type[j] == 1) {
+                    data[i][j] = "" + rs.getString(j + 1);
+                }
+            }
+            i++;
+        }
+        connect.close();
+    }
+    public static void main(String[] args) throws SQLException {
+        connect_mysql cnn= new connect_mysql("DataDOC","root","");
+        cnn.test();
+
+    }
 }
