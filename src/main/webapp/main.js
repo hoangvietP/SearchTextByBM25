@@ -34,10 +34,8 @@ countTR=1;
                     if(countKQ<1){
                         countKQ=1;
                     }
-                    var slkq=0;
-                    if((dtt.length-1)>=0){
-                        slkq= dtt.length-1;
-                    }
+                    var slkq=dtt.length;
+
                     document.getElementById("countTK").innerHTML="<h8 id='countTK' style='color:#11CCFF;padding-top:20px;'>"+slkq+" kết quả"+"</h8>";
                     setresult();
                     }
@@ -82,7 +80,7 @@ function setresult(){
 
         i1=i;
         data="";
-            for (i;i< dt.length-1; i++) {
+            for (i;i<=dt.length-1; i++) {
                             if(dt.length>8){
                                 if(i==i1+8){
                                     break;

@@ -74,11 +74,11 @@ public class dataDAO {
         connect_mysql cnn= new connect_mysql("DataDOC","root","");
         int[] ccl={0,1,0,1,0,1};
         String[][] data =null;
-        data= cnn.getdt("SELECT * FROM ttvb",6,200,ccl);
+        data= cnn.getdt("SELECT * FROM ttvb",6,300,ccl);
         double avg=0;
         double tr=0;
         int ifr =0;
-        int iend=150;
+        int iend=217;
         String loaivbTK="Tất cả các loại văn bản";
         if (bl.equals("true")){
             ifr=0;
@@ -91,20 +91,26 @@ public class dataDAO {
         }
         else if (nq.equals("true")){
             ifr=47;
-            iend=150;
+            iend=217;
             loaivbTK="Văn bản Nghị quyết";
         }
         System.out.println("Số data quét: "+(iend-ifr)+" Văn bản: "+loaivbTK);
-        for (int i = ifr;i<=iend;i++){
+        for (int i = ifr;i<=iend-1;i++){
             JSONObject obj = new JSONObject();
             obj.put("path",data[i][1]);
             obj.put("date",data[i][2]);
             obj.put("loai",data[i][3]);
-            int t = Integer.parseInt(data[i][5]);
-            int a = Integer.parseInt(data[i][4]);
-            avg+=a;
-            tr+=t;
-            arr.add(obj);
+            try {
+                if (!data[i][4].equals(null) && !data[i][4].equals(null)) {
+                    int t = Integer.parseInt(data[i][5]);
+                    int a = Integer.parseInt(data[i][4]);
+                    avg += a;
+                    tr += t;
+                }
+                arr.add(obj);
+            }catch (NullPointerException ex){
+
+            }
         }
         JSONObject o = new JSONObject();
         o.put("avg",avg/tr);
@@ -117,8 +123,8 @@ public class dataDAO {
 
     public static void main(String[] args) throws IOException, SQLException {
         dataDAO dt = new dataDAO();
-        for (int i=1;i<152;i++) {
-            String PathFile = "src/main/webapp/DocFile/NQ"+i+".doc";
+        for (int i=90;i<100;i++) {
+            String PathFile = "src/main/webapp/DocFile/luat"+i+".doc";
             String[] data = dt.getStringFile(PathFile);
             int avg = 0;
             for (String para : data) {
@@ -143,7 +149,7 @@ public class dataDAO {
 
 
             connect_mysql cnn = new connect_mysql("DataDOC", "root", "");
-            cnn.insertData("INSERT INTO `NQ` (`id`, `path`, `date`, `loaivb`, `avg`, `try`) VALUES (NULL, '" + PathFile + "', '" + date + "', '" + loai + "', '" + avg + "', '" + data.length + "');");
+            cnn.insertData("INSERT INTO `ttvb` (`id`, `path`, `date`, `loaivb`, `avg`, `try`) VALUES (NULL, '" + PathFile + "', '" + date + "', '" + loai + "', '" + avg + "', '" + data.length + "');");
 //        dataDAO dt = new dataDAO();
 //        dt.getAVPF();
         }

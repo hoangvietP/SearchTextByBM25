@@ -78,7 +78,7 @@ public class connect_mysql {
 ////        status=cnn.insertData("query"); ínert thành công status=true và ngc lại
 //    }
     public void test() throws SQLException {
-        String[][] data = new String[106][6];
+        String[][] data = new String[106+67][6];
         Connection connect = connect();
         Statement stmt = connect.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM NQ");

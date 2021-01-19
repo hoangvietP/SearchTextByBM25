@@ -317,9 +317,14 @@ public class BM25method {
                 }
             }
         }
-        if (count > 0) {
-            nd = parag[kSc + 1];
-            td = parag[kSc];
+        try {
+            if (count > 0) {
+                nd = parag[kSc + 1];
+                td = parag[kSc];
+            }
+        }catch (IndexOutOfBoundsException ex){
+            nd=  parag[kSc];
+            td= parag[kSc];
         }
         String[] rt= {td,nd};
         return rt;
@@ -353,8 +358,9 @@ public class BM25method {
             int i1= checkIn(CvTerm[1],para);
             te=CvTerm[0];
             //tính score
-            double score = (2.25*i/(i + 1.25 * (1 - 0.75 + 0.75 * leg / avg)));
-            double score1 = (2.25*i1/(i1 + 1.25 * (1 - 0.75 + 0.75 * leg / avg)));
+            double score = (2.2*i/(i + 1.2 * (1 - 0.75 + 0.75 * leg / avg)));
+
+            double score1 = (2.2*i1/(i1 + 1.2 * (1 - 0.75 + 0.75 * leg / avg)));
             if (score1>score){
                 score=score1;
                 te=CvTerm[1];
@@ -367,7 +373,7 @@ public class BM25method {
             double scPT=0.0;
             for (int l=0;l<=PtTerm.length-1;l++){
                 int iPT= checkIn(PtTerm[l],para);
-                double scorePT = (2.25*iPT/(iPT + 1.25 * (1 - 0.75 + 0.75 * leg / avg)));
+                double scorePT = (2.2*iPT/(iPT + 1.2 * (1 - 0.75 + 0.75 * leg / avg)));
                 scPT+=scorePT;
             }
             if (scPT>maxScPT){
@@ -379,8 +385,8 @@ public class BM25method {
             String[] rt = {TDN.substring(0,1).toLowerCase() + TDN.substring(1).toLowerCase(),TDN.substring(0,1).toUpperCase() + TDN.substring(1).toLowerCase()};
             int iDN= checkIn(rt[0],para);
             int iDN1=checkIn(rt[1],para);
-            double scoreDN = (2.25*iDN/(iDN + 1.25 * (1 - 0.75 + 0.75 * leg / avg)));
-            double scoreDN1 = (2.25*iDN1/(iDN1 + 1.25 * (1 - 0.75 + 0.75 * leg / avg)));
+            double scoreDN = (2.25*iDN/(iDN + 1.2 * (1 - 0.75 + 0.75 * leg / avg)));
+            double scoreDN1 = (2.25*iDN1/(iDN1 + 1.2 * (1 - 0.75 + 0.75 * leg / avg)));
             TDN=rt[0];
             if (scoreDN1>scoreDN){
                 scoreDN=scoreDN1;
